@@ -6,8 +6,18 @@ import { Link } from 'react-router-dom'
 function Navbar(props){
     return (
       <div className={classes["Navbar"]}>
-        <Link to="/signup" className={classes["link"]} > <Button  > Sign Up  </Button> </Link>
-        <Link to="/login" className={classes["link"]} > <Button > Login  </Button> </Link>
+        
+        <Link to="/" className={classes["home"]} >  Home  </Link>
+        { 
+          props.logged ? 
+            <Link to="/logout" className={classes["link"]} > <Button  > Logout  </Button> </Link> :
+            (
+              <>
+                <Link to="/signup" className={classes["link"]} > <Button  > Sign Up  </Button> </Link>
+                <Link to="/login" className={classes["link"]} > <Button > Login  </Button> </Link>
+              </>
+            )
+        }
       </div>
     );
 }

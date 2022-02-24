@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import Form from "../../component/Form/Form";
 import axios from "../../axios";
+import {useNavigate} from 'react-router-dom';
 
 function Signup(props) {
+  const navigate = useNavigate(); 
   const [detail, setDetail] = useState({ name: "", email: "", password: ""  });
   const [error, setError] = useState("");
 
@@ -22,8 +24,9 @@ function Signup(props) {
     axios
       .post("/users", data)
       .then((result) => {
-        console.log(result.data.token);
-        
+        props.setLogged(true);
+        props.setToken(result.data.token);
+        localStorage.setItem("token", result.data.token);
       })
       .catch((err) => {
           console.log(err);
@@ -32,11 +35,11 @@ function Signup(props) {
   }
 
   const options = {
-    formTitle: "SignUp",
+    formTitle: "Sign Up",
     errorMsg: error,
     changeHandler: changeHandler,
     uploadHandler: uploadHandler,
-    btnText: "SignUp",
+    btnText: "Sign Up",
     formFields: [
       {
         type: "name",
@@ -59,7 +62,8 @@ function Signup(props) {
     ],
   };
 
-  return <Form {...options} />;
+    return props.logged ? <> {navigate("/")} </> : <Form {...options} />;
+
 }
 
 export default Signup;
