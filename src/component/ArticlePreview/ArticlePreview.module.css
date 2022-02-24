@@ -1,0 +1,39 @@
+.Link {
+    text-decoration: none;
+    color: var(--black); 
+}
+
+.Link:visited {
+    text-decoration: none;
+    color: var(--black);
+}
+
+.Link:hover {
+    text-decoration: none;
+    color: var(--black);
+}
+
+.Link:active {
+    text-decoration: none;
+    color: var(--black);
+}
+
+.Article{
+    border: var(--blue) solid 2px;
+    margin: 0 30px 20px;
+    text-align: left;
+    padding-left: 30px;
+    border-radius: 20px;
+}
+
+.title{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px var(--teal) solid;
+}
+
+.content{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 10px;
+}

@@ -1,0 +1,18 @@
+.btn {
+	padding: 10px;
+	font-size: medium;
+	border: transparent;
+	border-radius: 5px;
+	background: var(--red);
+	color: white;
+	cursor: pointer;
+}
+
+.btn:hover {
+	background-color: white;
+	color: var(--red);
+	transition: ease-in 0.2s;
+	cursor: pointer;
+}
+
+
