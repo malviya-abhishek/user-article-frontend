@@ -3,9 +3,11 @@ import {useEffect, useState} from 'react';
 import axios from '../../axios'
 import classes from './Article.module.css'
 import Button from '../../component/Button/Button';
+import { useNavigate } from "react-router-dom";
 
 function Article(props){
     const articleId = useLocation().pathname.split("/")[2];
+    const nagvigate = useNavigate();
     const [article, setArticle] = useState({});
     const userId = localStorage.getItem("userId");
 
@@ -35,7 +37,9 @@ function Article(props){
           userId == article.userId ? 
           <div className={classes["btn-holder"]}>
             <Button  onClickHandler={()=>{}} > Delete </Button>
-            <Button green={true} onClickHandler={()=>{}} > Edit </Button>
+            <Button green={true} onClickHandler={()=>{
+              nagvigate(`/articles/${articleId}/edit`)
+            }} > Edit </Button>
           </div> 
           : null 
         }

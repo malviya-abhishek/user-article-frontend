@@ -5,8 +5,27 @@ function Form(props) {
   const fields = [];
 
   props.formFields.forEach((field) => {
-    fields.push(
-      <div key={field.name} >
+    
+    let element;
+
+    if (field.type === "textarea") {
+      element = (
+        <div key={field.name}>
+          <textarea
+            className={classes["input"]}
+            type={field.type}
+            name={field.name}
+            value={field.value}
+            onChange={props.changeHandler}
+            placeholder={field.placeholder}
+            rows="20"
+            cols="70"
+          />
+        </div>
+      );
+    } else {
+      element = (
+      <div key={field.name}>
         <input
           className={classes["input"]}
           type={field.type}
@@ -15,8 +34,9 @@ function Form(props) {
           onChange={props.changeHandler}
           placeholder={field.placeholder}
         />
-      </div>
-    );
+      </div> );
+    }
+    fields.push(element);
   });
 
   return (

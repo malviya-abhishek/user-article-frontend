@@ -7,6 +7,7 @@ import {useState, useEffect} from 'react';
 import Login from './container/Login/Login';
 import Signup from './container/Signup/Signup';
 import Logout from "./container/Logout/Logout"
+import CreateArticle from './container/CreateArticle/CreateArticle';
 
 function App() {
 
@@ -31,7 +32,7 @@ function App() {
         <Navbar logged={logged} />
         <Routes>
           <Route path="/" element={<ArticlePallet />} />
-          <Route path="/articles/:articleId" element={<Article />} />
+
           <Route
             path="/login"
             element={
@@ -58,6 +59,11 @@ function App() {
             path="/logout"
             element={<Logout setLogged={setLogged} setToken={setToken} />}
           />
+
+          <Route path="/createpost" element={<CreateArticle />} />
+          <Route path="/articles/:articleId" element={<Article />} />
+          <Route path="/articles/:articleId/edit" element={<CreateArticle />} />
+
         </Routes>
       </div>
     </Router>
