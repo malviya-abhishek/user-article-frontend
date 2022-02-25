@@ -6,9 +6,10 @@ function Logout(props) {
   useEffect(() => {
     localStorage.removeItem("token");
     props.setLogged(false);
+    navigate("/");
   });
 
-  return <> {navigate("/")} </>;
+  return <> </>;
 }
 
 export default Logout;

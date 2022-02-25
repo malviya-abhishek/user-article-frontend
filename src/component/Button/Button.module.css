@@ -4,13 +4,30 @@
 	border: transparent;
 	border-radius: 5px;
 	background: var(--red);
-	color: white;
+	color: var(--white);
 	cursor: pointer;
 }
 
 .btn:hover {
-	background-color: white;
+	background-color: var(--white);
 	color: var(--red);
+	transition: ease-in 0.2s;
+	cursor: pointer;
+}
+
+.btn-green{
+	padding: 10px;
+	font-size: medium;
+	border: transparent;
+	border-radius: 5px;
+	background: var(--green);
+	color: var(--white);
+	cursor: pointer;
+}
+
+.btn-green:hover{
+	background-color: var(--white);
+	color: var(--green);
 	transition: ease-in 0.2s;
 	cursor: pointer;
 }

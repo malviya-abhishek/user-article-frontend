@@ -2,11 +2,13 @@ import {useLocation} from 'react-router-dom'
 import {useEffect, useState} from 'react';
 import axios from '../../axios'
 import classes from './Article.module.css'
+import Button from '../../component/Button/Button';
 
 function Article(props){
     const articleId = useLocation().pathname.split("/")[2];
     const [article, setArticle] = useState({});
-    
+    const userId = localStorage.getItem("userId");
+
     useEffect( ()=>{
         axios
         .get(`/articles/${articleId}`)
@@ -14,8 +16,7 @@ function Article(props){
             const temp = {
               title: result.data.title,
               content: result.data.content,
-            //   author: result.data.author,
-            //   uploadDate: result.data.createdAt
+              userId: result.data.UserId
             };
             setArticle(temp);
         })
@@ -29,6 +30,15 @@ function Article(props){
       <div className={classes["Article"]}>
         <div className={classes["title"]}> {article.title} </div>
         <div className={classes["content"]}> {article.content} </div>
+
+        { 
+          userId == article.userId ? 
+          <div className={classes["btn-holder"]}>
+            <Button  onClickHandler={()=>{}} > Delete </Button>
+            <Button green={true} onClickHandler={()=>{}} > Edit </Button>
+          </div> 
+          : null 
+        }
       </div>
     );
 };

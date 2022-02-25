@@ -3,10 +3,8 @@ import Form from '../../component/Form/Form';
 import axios from "../../axios";
 import {useNavigate} from 'react-router-dom'
 
-
 function Login(props){
   const navigate = useNavigate(); 
-
   const [detail, setDetail] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
 
@@ -27,7 +25,10 @@ function Login(props){
       .then( (result)=>{
         props.setLogged(true);
         props.setToken(result.data.token);
+        props.setUserId(result.data.userId);
         localStorage.setItem("token", result.data.token);
+        localStorage.setItem("userId", result.data.userId);
+        navigate("/");
       })
       .catch( (err)=>{
         setError(err.response.data.error);
@@ -58,7 +59,7 @@ function Login(props){
   };
 
         
-  return props.logged ? <> {navigate("/")} </> : <Form {...options} />;
+  return  <Form {...options} />;
         
 }
 

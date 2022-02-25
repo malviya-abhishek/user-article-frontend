@@ -4,7 +4,7 @@ import classes from './Button.module.css'
 
 function Button(props){
     return( 
-        <button className={classes.btn} onClick={props.onClickHandler }  > 
+        <button className={ props.green ? classes["btn-green"] : classes.btn} onClick={props.onClickHandler }  > 
             {props.children}
         </button>
     )

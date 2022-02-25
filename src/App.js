@@ -12,12 +12,15 @@ function App() {
 
   const [logged, setLogged] = useState(false);
   const [token, setToken] = useState(null);
+  const [userId, setUserId] = useState(null);
 
   useEffect( ()=>{
     const storedToken = localStorage.getItem("token")
+    const storedUserId = localStorage.getItem("userId");
     if(storedToken){
       setToken(storedToken);
       setLogged(true);
+      setUserId(storedUserId)
     }
   }, [] )
 
@@ -31,13 +34,30 @@ function App() {
           <Route path="/articles/:articleId" element={<Article />} />
           <Route
             path="/login"
-            element={<Login setToken={setToken} setLogged={setLogged} logged={logged} />}
+            element={
+              <Login
+                setToken={setToken}
+                setLogged={setLogged}
+                logged={logged}
+                setUserId={setUserId}
+              />
+            }
           />
           <Route
             path="/signup"
-            element={<Signup setToken={setToken} setLogged={setLogged} logged={logged} />}
+            element={
+              <Signup
+                setToken={setToken}
+                setLogged={setLogged}
+                logged={logged}
+                setUserId={setUserId}
+              />
+            }
           />
-          <Route path="/logout"  element={ <Logout setLogged={setLogged} setToken={setToken} /> } />
+          <Route
+            path="/logout"
+            element={<Logout setLogged={setLogged} setToken={setToken} />}
+          />
         </Routes>
       </div>
     </Router>

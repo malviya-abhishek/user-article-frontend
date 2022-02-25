@@ -17,3 +17,14 @@
     padding-bottom: 5px;
     padding-right: 10px;
 }
+
+.btn-holder{
+    display: block;
+}
+
+.btn-holder > Button{
+    display: block;
+    float: right;
+    margin-top: 10px;
+    margin-left: 10px;
+}

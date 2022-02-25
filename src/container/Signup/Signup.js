@@ -26,11 +26,13 @@ function Signup(props) {
       .then((result) => {
         props.setLogged(true);
         props.setToken(result.data.token);
+        props.setUserId(result.data.userId);
         localStorage.setItem("token", result.data.token);
+        localStorage.setItem("userId", result.data.userId);
+        navigate("/");
       })
       .catch((err) => {
           console.log(err);
-        // setError(err.response.data.error);
       });
   }
 
@@ -62,7 +64,7 @@ function Signup(props) {
     ],
   };
 
-    return props.logged ? <> {navigate("/")} </> : <Form {...options} />;
+    return  <Form {...options} />;
 
 }
 
