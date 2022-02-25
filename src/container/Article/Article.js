@@ -35,7 +35,7 @@ function Article(props){
           },
         })
         .then((result) => {
-          navigate(`/`);
+          navigate(-1);
         })
         .catch((err) => {
           console.log(err.response.data.error);

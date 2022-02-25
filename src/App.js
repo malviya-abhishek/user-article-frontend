@@ -8,6 +8,8 @@ import Login from './container/Login/Login';
 import Signup from './container/Signup/Signup';
 import Logout from "./container/Logout/Logout"
 import CreateArticle from './container/CreateArticle/CreateArticle';
+import UserProfile from './container/UserProfile/UserProfile'
+import EditProfile from './container/EditProfile/EditProfile';
 
 function App() {
 
@@ -32,6 +34,11 @@ function App() {
         <Navbar logged={logged} />
         <Routes>
           <Route path="/" element={<ArticlePallet />} />
+          <Route
+            exact
+            path="/profile"
+            element={<UserProfile userId={userId} token={token} />}
+          />
 
           <Route
             path="/login"
@@ -39,7 +46,6 @@ function App() {
               <Login
                 setToken={setToken}
                 setLogged={setLogged}
-                logged={logged}
                 setUserId={setUserId}
               />
             }
@@ -50,20 +56,30 @@ function App() {
               <Signup
                 setToken={setToken}
                 setLogged={setLogged}
-                logged={logged}
                 setUserId={setUserId}
               />
             }
           />
+
+          <Route
+            path="/profile/edit"
+            element={ <EditProfile userId={userId} token={token} />}
+          />
+
           <Route
             path="/logout"
-            element={<Logout setLogged={setLogged} setToken={setToken} />}
+            element={
+              <Logout
+                setLogged={setLogged}
+                setToken={setToken}
+                setUserId={setUserId}
+              />
+            }
           />
 
           <Route path="/createpost" element={<CreateArticle />} />
           <Route path="/articles/:articleId" element={<Article />} />
           <Route path="/articles/:articleId/edit" element={<CreateArticle />} />
-
         </Routes>
       </div>
     </Router>

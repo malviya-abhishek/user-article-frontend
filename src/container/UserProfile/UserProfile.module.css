@@ -1,0 +1,17 @@
+.heading{
+    margin-bottom: 30px;
+    align-content: center;
+}
+
+.heading > Button{
+    float: right;
+    margin-right: 20px;
+}
+
+.username{
+    display: inline;
+    color: var(--teal);
+    margin: auto;
+}
+
+

@@ -7,10 +7,11 @@ function Navbar(props){
     return (
       <div className={classes["Navbar"]}>
         
-        <Link to="/" className={classes["home"]} >  Home  </Link>
+        <Link to="/" className={classes["text"]} >  Home  </Link>
         { 
           props.logged ? 
             <>
+              <Link to="/profile" className={classes["text"]} >  Profile  </Link>
               <Link to="/logout" className={classes["link"]} > <Button  > Logout  </Button> </Link> 
               <Link to="/createpost"  className={classes["link"]} > <Button green={true}  > Create Post  </Button> </Link> 
             </> :

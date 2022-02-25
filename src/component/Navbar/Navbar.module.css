@@ -10,11 +10,11 @@
     margin-right: 10px;
 }
 
-.home{
+.text{
     font-size: xx-large;
     float: left;
     margin-top: 10px;
     margin-left: 30px;
     text-decoration: none;
-    color: var(--red);
+    color: var(--teal);
 }

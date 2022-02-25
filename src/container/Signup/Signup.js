@@ -24,11 +24,12 @@ function Signup(props) {
     axios
       .post("/users", data)
       .then((result) => {
+        console.log(result.data);
         props.setLogged(true);
         props.setToken(result.data.token);
-        props.setUserId(result.data.userId);
+        props.setUserId(result.data.id);
         localStorage.setItem("token", result.data.token);
-        localStorage.setItem("userId", result.data.userId);
+        localStorage.setItem("userId", result.data.id);
         navigate("/");
       })
       .catch((err) => {
