@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 function Article(props){
     const articleId = useLocation().pathname.split("/")[2];
-    const nagvigate = useNavigate();
+    const navigate = useNavigate();
     const [article, setArticle] = useState({});
     const userId = localStorage.getItem("userId");
 
@@ -27,6 +27,21 @@ function Article(props){
         });
     }, [] )
 
+    function deleteArticle(){
+      axios
+        .delete(`/articles/${articleId}`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        })
+        .then((result) => {
+          navigate(`/`);
+        })
+        .catch((err) => {
+          console.log(err.response.data.error);
+        });
+    }
+
 
     return (
       <div className={classes["Article"]}>
@@ -36,9 +51,9 @@ function Article(props){
         { 
           userId == article.userId ? 
           <div className={classes["btn-holder"]}>
-            <Button  onClickHandler={()=>{}} > Delete </Button>
+            <Button  onClickHandler={deleteArticle} > Delete </Button>
             <Button green={true} onClickHandler={()=>{
-              nagvigate(`/articles/${articleId}/edit`)
+              navigate(`/articles/${articleId}/edit`);
             }} > Edit </Button>
           </div> 
           : null 

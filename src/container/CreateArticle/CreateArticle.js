@@ -45,7 +45,7 @@ function CreateArticle(props){
           content: detail.content
       }
       if(toEdit) {
-          const articleId  = articleUrl[articleUrl.length - 2];
+        const articleId  = articleUrl[articleUrl.length - 2];
         axios
           .put(`/articles/${articleId}`, data, {
             headers: {
