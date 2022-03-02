@@ -16,3 +16,7 @@
     padding: 5px;
     width: 80%;
 }
+
+.err-msg{
+    color: red;
+}

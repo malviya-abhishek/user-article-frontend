@@ -26,7 +26,7 @@ function CreateArticle(props){
             setDetail(temp);
           })
           .catch((err) => {
-            console.log(err);
+            console.log(err.response.data);
           });
     }
     
@@ -69,7 +69,7 @@ function CreateArticle(props){
             navigate(`/articles/${result.data.id}`);
           })
           .catch((err) => {
-            setError(err.response.data.error);
+            setError(err.response.data.msg);
           });
       }
   }

@@ -42,7 +42,7 @@ function Form(props) {
   return (
     <div className={classes["form-holder"]}>
       <h1> {props.formTitle} </h1>
-      <p> {props.errorMsg} </p>
+      <p className={classes["err-msg"]} > {props.errorMsg} </p>
       <form className={classes["form"]}>
         {fields}
         <Button type="submit" onClickHandler={props.uploadHandler}>

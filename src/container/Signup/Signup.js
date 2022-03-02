@@ -21,6 +21,8 @@ function Signup(props) {
       email: detail.email,
       password: detail.password,
     };
+
+
     axios
       .post("/users", data)
       .then((result) => {
@@ -32,7 +34,10 @@ function Signup(props) {
         navigate("/");
       })
       .catch((err) => {
-          console.log(err);
+          if(err.response.status === 500)
+            setError("Email is used");
+          else
+            setError(err.response.data.msg);
       });
   }
 
