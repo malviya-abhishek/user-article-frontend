@@ -37,7 +37,7 @@ function UserProfile(props){
                 setUserArticles(temp);
             })
             .catch((err)=>{
-                console.log(err);
+                console.log(err.response.data);
             })
     }, []);
 

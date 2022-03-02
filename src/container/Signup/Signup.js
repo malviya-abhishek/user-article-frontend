@@ -24,7 +24,6 @@ function Signup(props) {
     axios
       .post("/users", data)
       .then((result) => {
-        console.log(result.data);
         props.setLogged(true);
         props.setToken(result.data.token);
         props.setUserId(result.data.id);
