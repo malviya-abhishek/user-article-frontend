@@ -39,7 +39,7 @@ function UserProfile(props){
             .catch((err)=>{
                 console.log(err.response.data);
             })
-    }, []);
+    }, [props.userId]);
 
     function editProfile(){
         navigate("/profile/edit");
