@@ -6,14 +6,13 @@ import Button from '../../component/Button/Button';
 import { useNavigate } from "react-router-dom";
 
 function Article(props){
-    const articleId = useLocation().pathname.split("/")[2];
     const navigate = useNavigate();
     const [article, setArticle] = useState({});
     const userId = localStorage.getItem("userId");
 
     useEffect( ()=>{
         axios
-        .get(`/articles/${articleId}`)
+        .get(`/articles/${useLocation().pathname.split("/")[2]}`)
         .then( (result) => {
             const temp = {
               title: result.data.title,
@@ -29,7 +28,7 @@ function Article(props){
 
     function deleteArticle(){
       axios
-        .delete(`/articles/${articleId}`, {
+        .delete(`/articles/${useLocation().pathname.split("/")[2]}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
@@ -53,7 +52,7 @@ function Article(props){
           <div className={classes["btn-holder"]}>
             <Button  onClickHandler={deleteArticle} > Delete </Button>
             <Button green={true} onClickHandler={()=>{
-              navigate(`/articles/${articleId}/edit`);
+              navigate(`/articles/${useLocation().pathname.split("/")[2]}/edit`);
             }} > Edit </Button>
           </div> 
           : null 

@@ -14,7 +14,7 @@ function CreateArticle(props){
   const [toEdit, setToEdit] = useState(false);
 
   useEffect( ()=>{
-    if(articleUrl[articleUrl.length - 1] == "edit"){
+    if(articleUrl[articleUrl.length - 1] === "edit"){
         setToEdit(true);
         axios
           .get(`/articles/${articleUrl[articleUrl.length - 2]}`)
