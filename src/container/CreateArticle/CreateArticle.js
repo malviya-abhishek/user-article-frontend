@@ -5,19 +5,15 @@ import {useNavigate} from 'react-router-dom'
 import { useLocation } from "react-router-dom";
 
 function CreateArticle(props){
-  
-  const articleUrl = useLocation().pathname.split("/"); 
+  const {state} = useLocation();
   const navigate = useNavigate(); 
-
   const [detail, setDetail] = useState({ title: "", content: "" });
   const [error, setError] = useState("");
-  const [toEdit, setToEdit] = useState(false);
 
   useEffect( ()=>{
-    if(articleUrl[articleUrl.length - 1] === "edit"){
-        setToEdit(true);
+    if(state?.toEdit){
         axios
-          .get(`/articles/${articleUrl[articleUrl.length - 2]}`)
+          .get(`/articles/${state?.articleId}`)
           .then((result) => {
             const temp = {
               title: result.data.title,
@@ -30,7 +26,9 @@ function CreateArticle(props){
           });
     }
     
-   }, [] )
+   }, [state])
+
+   console.log("Jello world", state);
 
   function changeHandler(e) {
       const name = e.target.name;
@@ -44,8 +42,8 @@ function CreateArticle(props){
           title: detail.title,
           content: detail.content
       }
-      if(toEdit) {
-        const articleId  = articleUrl[articleUrl.length - 2];
+      if(state?.toEdit) {
+        const articleId  = state?.articleId;
         axios
           .put(`/articles/${articleId}`, data, {
             headers: {

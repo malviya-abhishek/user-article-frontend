@@ -25,7 +25,7 @@ function Article(props){
         .catch( err => {
             console.log(err);
         });
-    }, [] )
+    }, [articleId] )
 
     function deleteArticle(){
       axios
@@ -35,25 +35,25 @@ function Article(props){
           },
         })
         .then((result) => {
-          navigate(-1);
+          navigate("/");
         })
         .catch((err) => {
           console.log(err.response.data.error);
         });
     }
 
-
+    
     return (
       <div className={classes["Article"]}>
         <div className={classes["title"]}> {article.title} </div>
         <div className={classes["content"]}> {article.content} </div>
 
         { 
-          userId == article.userId ? 
+          parseInt( userId) === article.userId ? 
           <div className={classes["btn-holder"]}>
             <Button  onClickHandler={deleteArticle} > Delete </Button>
             <Button green={true} onClickHandler={()=>{
-              navigate(`/articles/${articleId}/edit`);
+              navigate(`/articles/${articleId}/edit`, { state: { toEdit : true, articleId: articleId }} );
             }} > Edit </Button>
           </div> 
           : null 
