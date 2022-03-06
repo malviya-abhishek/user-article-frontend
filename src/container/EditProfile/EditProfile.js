@@ -18,7 +18,7 @@ function EditProfile(props){
           .catch((err) => {
             console.log(err);
           });
-    }, []);
+    }, [props.userId]);
     
     function changeHandler(e) {
         const name = e.target.name;
@@ -46,6 +46,7 @@ function EditProfile(props){
             navigate(-1);
           })
           .catch((err) => {
+            setError("Something went wrong")
             console.log(err.response);
           });
     }

@@ -28,7 +28,6 @@ function CreateArticle(props){
     
    }, [state])
 
-   console.log("Jello world", state);
 
   function changeHandler(e) {
       const name = e.target.name;
