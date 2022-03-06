@@ -2,7 +2,7 @@ import './App.css';
 import Navbar from './component/Navbar/Navbar';
 import ArticlePallet from './container/ArticlesPallet/ArticlesPallet';
 import Article from './container/Article/Article'
-import {  BrowserRouter as Router, Route, Routes, Switch } from "react-router-dom";
+import {  BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import {useState, useEffect} from 'react';
 import Login from './container/Login/Login';
 import Signup from './container/Signup/Signup';
