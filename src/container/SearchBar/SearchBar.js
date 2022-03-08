@@ -65,5 +65,3 @@ function SearchBar(props){
 
 export default SearchBar;
 
-
-//<div className={classes["content"]}> {props.content.substring(0, Math.min(props.content.length, 200))} </div>
