@@ -76,10 +76,10 @@ function App() {
               />
             }
           />
-
           <Route path="/createpost" element={<CreateArticle />} />
           <Route path="/articles/:articleId" element={<Article />} />
           <Route path="/articles/:articleId/edit" element={<CreateArticle />} />
+
         </Routes>
       </div>
     </Router>

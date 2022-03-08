@@ -2,12 +2,14 @@ import React from 'react';
 import Button from '../Button/Button';
 import classes from "./Navbar.module.css";
 import { Link } from 'react-router-dom'
+import SearchBar from '../../container/SearchBar/SearchBar';
 
 function Navbar(props){
     return (
       <div className={classes["Navbar"]}>
         
         <Link to="/" className={classes["text"]} >  Home  </Link>
+        
         { 
           props.logged ? 
             <>
@@ -22,6 +24,10 @@ function Navbar(props){
               </>
             )
         }
+        
+        <div className={classes["search-bar"]} > 
+          <  SearchBar />
+        </div>
       </div>
     );
 }

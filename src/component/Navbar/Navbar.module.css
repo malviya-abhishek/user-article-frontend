@@ -4,17 +4,23 @@
     margin-bottom: 20px;
 }
 
+.text{
+    font-size: xx-large;
+    float: left;
+    margin-top: 8px;
+    margin-left: 30px;
+    text-decoration: none;
+    color: var(--teal);
+}
+
 .link{
     float: right;
     margin: 10px;
     margin-right: 10px;
 }
 
-.text{
-    font-size: xx-large;
-    float: left;
-    margin-top: 10px;
-    margin-left: 30px;
-    text-decoration: none;
-    color: var(--teal);
+
+
+.search-bar{
+    float: right;
 }
