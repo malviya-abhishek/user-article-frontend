@@ -16,6 +16,17 @@ function Login(props){
 
   function uploadHandler(e) {
       e.preventDefault();
+
+      let errorMsg = "";
+
+      if(detail.email.length === 0 || !detail.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)   )
+        errorMsg += "Wrong email format";
+      
+      if(errorMsg.length){
+        setError(errorMsg);
+        return;
+      }
+
       const data = {
           email : detail.email,
           password: detail.password
@@ -31,7 +42,7 @@ function Login(props){
         navigate("/");
       })
       .catch( (err)=>{
-        setError(err.response.data.error);
+        setError(err.response.data.msg);
       });
   }
 

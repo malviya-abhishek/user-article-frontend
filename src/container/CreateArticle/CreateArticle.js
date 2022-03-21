@@ -37,6 +37,19 @@ function CreateArticle(props){
 
   function uploadHandler(e) {
       e.preventDefault();
+      let errorMsg = "";
+      if(detail.title.length === 0)
+        errorMsg += "Title is missing | ";
+      
+      if(detail.content.length === 0)
+        errorMsg += "Content is missing ";
+      
+      if(errorMsg.length){
+        setError(errorMsg);
+        return;
+
+      }
+
       const data = {
           title: detail.title,
           content: detail.content

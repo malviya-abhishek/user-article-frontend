@@ -16,6 +16,24 @@ function Signup(props) {
 
   function uploadHandler(e) {
     e.preventDefault();
+
+    let errorMsg = "";
+
+    if(detail.name.length === 0)
+      errorMsg += "Name Missing | ";
+
+    if(detail.email.length === 0 || !detail.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)   )
+      errorMsg += "Wrong email format | ";
+    
+    if(detail.password.length < 8 )
+      errorMsg += "Password to small";
+    
+    if(errorMsg.length){
+      setError(errorMsg);
+      return;
+    }
+
+
     const data = {
       name: detail.name,
       email: detail.email,
