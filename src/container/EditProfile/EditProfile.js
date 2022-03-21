@@ -34,7 +34,7 @@ function EditProfile(props){
         };
 
         if(detail.password.length)
-            data["password"] = detail.password.password
+            data["password"] = detail.password
 
         axios
           .put(

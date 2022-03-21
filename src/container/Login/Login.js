@@ -2,6 +2,7 @@ import { useState } from "react";
 import Form from '../../component/Form/Form';
 import axios from "../../axios";
 import {useNavigate} from 'react-router-dom'
+import { emailValidate } from "../../services/email.services";
 
 function Login(props){
   const navigate = useNavigate(); 
@@ -19,7 +20,7 @@ function Login(props){
 
       let errorMsg = "";
 
-      if(detail.email.length === 0 || !detail.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)   )
+      if(detail.email.length === 0 || emailValidate(detail.email) === false  )
         errorMsg += "Wrong email format";
       
       if(errorMsg.length){

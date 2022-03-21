@@ -2,6 +2,7 @@ import { useState } from "react";
 import Form from "../../component/Form/Form";
 import axios from "../../axios";
 import {useNavigate} from 'react-router-dom';
+import { emailValidate } from "../../services/email.services";
 
 function Signup(props) {
   const navigate = useNavigate(); 
@@ -22,8 +23,8 @@ function Signup(props) {
     if(detail.name.length === 0)
       errorMsg += "Name Missing | ";
 
-    if(detail.email.length === 0 || !detail.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)   )
-      errorMsg += "Wrong email format | ";
+    if(detail.email.length === 0 || emailValidate(detail.email) === false   )
+      errorMsg += "| Wrong email format | ";
     
     if(detail.password.length < 8 )
       errorMsg += "Password to small";
