@@ -49,7 +49,7 @@ function Article(props){
         <div className={classes["content"]}> {article.content} </div>
 
         { 
-          parseInt(userId) === article.userId ? 
+          parseInt(userId) === article.user.id ? 
           <div className={classes["btn-holder"]}>
             <Button  onClickHandler={deleteArticle} > Delete </Button>
             <Button green={true} onClickHandler={()=>{
