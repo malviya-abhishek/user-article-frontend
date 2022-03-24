@@ -18,7 +18,7 @@ function Article(props){
             const temp = {
               title: result.data.title,
               content: result.data.content,
-              userId: result.data.UserId
+              userId: result.data.User.id
             };
             setArticle(temp);
         })
@@ -49,7 +49,7 @@ function Article(props){
         <div className={classes["content"]}> {article.content} </div>
 
         { 
-          parseInt(userId) === article.user.id ? 
+          parseInt(userId) === article.userId ? 
           <div className={classes["btn-holder"]}>
             <Button  onClickHandler={deleteArticle} > Delete </Button>
             <Button green={true} onClickHandler={()=>{
