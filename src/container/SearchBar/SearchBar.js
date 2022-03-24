@@ -22,7 +22,7 @@ function SearchBar(props){
             const options = { 
                 params: { word : word }
             }
-            axios.post("/articles/wordsearch",null,options).then((result)=>{
+            axios.get("/articles/wordsearch",null,options).then((result)=>{
                 const list = result.data.result;
                 const temp = []
                 list.forEach(element => {
