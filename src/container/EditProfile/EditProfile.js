@@ -65,12 +65,6 @@ function EditProfile(props){
             placeholder: "Name",
         },
         {
-            type: "email",
-            name: "email",
-            value: detail.email,
-            placeholder: "Email",
-        },
-        {
             type: "password",
             name: "password",
             value: detail.password,
